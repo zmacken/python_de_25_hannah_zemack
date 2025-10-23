@@ -1,4 +1,5 @@
 from numbers import Number
+from utils import validate_positive_number
 
 class UnitConverter:
     def __init__(self, value: int | float): #| means or
@@ -10,13 +11,11 @@ class UnitConverter:
     
     @value.setter
     def value(self, value):
-        if not isinstance(value, Number):
-            raise TypeError ('input a value that is a number')
-        if not value >= 0:
-            raise ValueError ('number should be larger or equal to 0')
+        validate_positive_number(value)
+
         self._value = value
     
 
-unit_converter = UnitConverter(3)
+unit_converter = UnitConverter(5)
 
 print(f'{unit_converter.value = }')
